@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="PlayTheWorld">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Shanghai International Auction 2022</title>
+
+</head>
+
+<body class="has-loading-screen ts-theme-dark">
+
+    <!--*************************************************************************************************************-->
+    <!--************ MAIN SCREEN ************************************************************************************-->
+    <!--*************************************************************************************************************-->
+
+    <div class="ts-page-wrapper">
+        <div class="container">
+
+            <!--NAVIGATION ******************************************************************************************-->
+            <header id="header">
+                <nav class="navbar navbar-dark ts-separate-bg-element">
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/img/logo.png" alt="">
+                    </a>
+                </nav>
+                <!--end navbar-->
+            </header>
+            <!--end #header-->
+
+            <!--CONTENT *********************************************************************************************-->
+            <main id="main-content">
+                <div class="ts-content-wrapper">
+                    <div class="row">
+                        <!--Page Title-->
+                        <div class="col-md-6">
+                            <h1>Get Ready For Our<br>ICO Launch</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra lectus
+                                neque.
+                            </p>
+                            <form class="ts-form ts-form-email" id="subscribe-form">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" id="email-subscribe"
+                                                aria-describedby="subscribe" name="email"
+                                                placeholder="Enter Email Address" required>
+                                        </div>
+                                        <!--end form-group-->
+                                    </div>
+                                    <!--end col-md-10-->
+                                    <div class="col-md-3">
+                                        <button type="submit" class="btn btn-primary w-100" id="btn-submit">Subscribe</button>
+                                    </div>
+                                    <!--end col-md-2-->
+                                </div>
+                                <!--end row-->
+                            </form>
+                            <!--end ts-form-->
+                        </div>
+                        <!--end col-md-6-->
+                        <!--Count Down-->
+                        <div class="col-md-6">
+                            <div class="text-center my-4">
+                                <div class="ts-count-down" data-date="Thu Feb 24 2022 00:00:00"></div>
+                                <!--end ts-count-down-->
+                            </div>
+                        </div>
+                        <!--end col-md-6-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end ts-content-wrapper-->
+            </main>
+            <!--end #main-content-->
+
+            <!--FOOTER **********************************************************************************************-->
+            <footer id="footer">
+                <div class="clearfix py-4">
+                    <!--end social-icons-->
+                    <div class="float-none float-sm-right text-left text-sm-right ts-opacity__50">
+                        <small>© 2022 PlayTheWorld, All Rights Reserved</small>
+                    </div>
+                    <!--end text-left-->
+                </div>
+                <!--end clearfix-->
+            </footer>
+            <!--end #footer-->
+        </div>
+        <!--end container-->
+
+        <!--BACKGROUND **********************************************************************************************-->
+        <div id="ts-waterpipe-bg" class="ts-background position-fixed ts-separate-bg-element" data-bg-color="#00265f">
+            <canvas></canvas>
+        </div>
+        <!--end ts-background-->
+    </div>
+    <!--end ts-page-wrapper-->
+
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/waterpipe.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.countdown.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
+
+    <script src="assets/js/custom.js"></script>
+
+    <!--Google map-->
+
+    <script>
+        var smokyBG = $('#ts-waterpipe-bg').waterpipe({
+            gradientStart: '#00c7ee',
+            gradientEnd: '#c380ff',
+            smokeOpacity: 0.1,
+            numCircles: 1,
+            maxMaxRad: 'auto',
+            minMaxRad: 'auto',
+            minRadFactor: 0,
+            iterations: 8,
+            drawsPerFrame: 10,
+            lineWidth: .8,
+            speed: 1,
+            bgColorInner: "#00265f",
+            bgColorOuter: "#00143a"
+        });
+
+        $(function () {
+            $('#subscribe-form').on('submit', function (e) {
+                console.log("done")
+                e.preventDefault();
+                let email = $('#email-subscribe');
+                if (email.val() === "") {
+                    alert("올바른 이메일 주소를 입력하세요.");
+                    return false;
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "https://hooks.zapier.com/hooks/catch/9127511/b9jpbkc/",
+                    data: {
+                        email: email.val(),
+                        created_at: new Date()
+                    }
+                }).then(data => {
+                    if (data.status === "success") {
+                        alert("신청이 완료됐습니다.");
+                        
+                    } else {
+                        alert("신청에 실패했습니다. 잠시 후 다시 시도하세요.")
+                    }
+                    $('#btn-submit').removeClass("processing");
+                    $('#btn-submit').find('div').remove();
+                })
+            })
+        })
+    </script>
+
+</body>
+
+</html>
