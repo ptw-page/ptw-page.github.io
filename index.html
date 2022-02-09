@@ -180,7 +180,6 @@ It is logically impossible to resell the work when you purchase it through a gal
         $(function () {
             if(sessionStorage.getItem('subscribe')) $('#products').show();
             $('#subscribe-form').on('submit', function (e) {
-                console.log("done")
                 e.preventDefault();
                 let email = $('#email-subscribe');
                 if (email.val() === "") {
@@ -197,7 +196,7 @@ It is logically impossible to resell the work when you purchase it through a gal
                     }
                 }).then(data => {
                     if (data.status === "success") {
-                        alert("신청이 완료됐습니다.\n비밀코드: 0209");
+                        alert("이벤트 기간이 종료되었습니다.\n비밀코드: 0209");
                         $('#products').show();
                         sessionStorage.setItem('subscribe', true);
                     } else {
